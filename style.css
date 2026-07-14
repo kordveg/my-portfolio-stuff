@@ -1,3 +1,27 @@
+/* General page layout */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* Heading styles */
+h1 {
+    color: #4caf50;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+/* Paragraph text styles */
+p {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+}
+
 /* Layout Sections */
 section {
     margin-top: 40px;
@@ -35,7 +59,7 @@ h2 {
     border-color: #4caf50;
 }
 
-/* Temporary boxes until you add real art files */
+/* Dark layout placeholder boxes */
 .image-placeholder {
     background-color: #2a2a2a;
     height: 120px;
@@ -43,7 +67,6 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
     margin-bottom: 15px;
 }
 

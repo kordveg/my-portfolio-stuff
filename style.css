@@ -7,9 +7,9 @@
     --border-color: #3f3f46;      /* Softer neutral borders */
     --placeholder-bg: #1e1f22;    /* Dark cutout look */
     
-    /* Sliding Switch Variables - Dark Mode */
+    /* Sliding Switch Variables - Dark Mode (Crescent Symbol) */
     --switch-bg: #27272a;
-    --switch-icon: "🌙";
+    --switch-icon: "☾";           
 }
 
 /* Light Mode alternative values */
@@ -21,9 +21,9 @@
     --border-color: #e4e4e7;      /* Clean light border */
     --placeholder-bg: #f4f4f5;    /* Light cutout look */
     
-    /* Sliding Switch Variables - Light Mode */
+    /* Sliding Switch Variables - Light Mode (Sunburst Symbol) */
     --switch-bg: #e4e4e7;
-    --switch-icon: "☀️";
+    --switch-icon: "☼";           
 }
 
 /* General page layout */
@@ -35,10 +35,10 @@ body {
     margin: 60px auto;
     padding: 0 20px;
     text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Fades themes smoothly */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth layout fading */
 }
 
-/* Theme Toggle Capsule Component */
+/* Theme Toggle Capsule Track Component */
 .theme-switch-container {
     text-align: right;
     margin-bottom: 30px;
@@ -58,7 +58,7 @@ body {
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* The sliding circular switch handle */
+/* The sliding circular switch handle notch */
 .switch-handle {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -70,11 +70,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--text-primary);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
 }
 
-/* Places the active emoji character inside the node */
+/* Places the active glyph character symbol inside the node */
 .switch-handle::before {
     content: var(--switch-icon);
 }

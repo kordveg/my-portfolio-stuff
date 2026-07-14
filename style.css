@@ -1,17 +1,92 @@
+/* Color variables for theme swapping */
+:root {
+    --bg-color: #1e1f22;          /* Softer dark charcoal */
+    --text-primary: #f4f4f5;      /* Soft off-white */
+    --text-secondary: #a1a1aa;    /* Comfortable gray */
+    --card-bg: #27272a;           /* Slightly lighter dark gray */
+    --border-color: #3f3f46;      /* Softer neutral borders */
+    --placeholder-bg: #1e1f22;    /* Dark cutout look */
+    
+    /* Sliding Switch Variables - Dark Mode */
+    --switch-bg: #27272a;
+    --switch-icon: "🌙";
+}
+
+/* Light Mode alternative values */
+.light-mode {
+    --bg-color: #f4f4f5;          /* Cream white */
+    --text-primary: #18181b;      /* Soft matte black */
+    --text-secondary: #52525b;    /* Deep slate gray */
+    --card-bg: #ffffff;           /* Crisp white cards */
+    --border-color: #e4e4e7;      /* Clean light border */
+    --placeholder-bg: #f4f4f5;    /* Light cutout look */
+    
+    /* Sliding Switch Variables - Light Mode */
+    --switch-bg: #e4e4e7;
+    --switch-icon: "☀️";
+}
+
 /* General page layout */
 body {
     font-family: 'JetBrains Mono', monospace;
-    background-color: #1e1f22; /* Softer, low-contrast dark charcoal */
-    color: #d4d4d8; /* Low-strain muted silver text */
+    background-color: var(--bg-color);
+    color: var(--text-primary);
     max-width: 800px;
     margin: 60px auto;
     padding: 0 20px;
     text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Fades themes smoothly */
+}
+
+/* Theme Toggle Capsule Component */
+.theme-switch-container {
+    text-align: right;
+    margin-bottom: 30px;
+}
+
+#theme-toggle {
+    background-color: var(--switch-bg);
+    border: 2px solid var(--border-color);
+    width: 60px;
+    height: 32px;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* The sliding circular switch handle */
+.switch-handle {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: absolute;
+    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
+}
+
+/* Places the active emoji character inside the node */
+.switch-handle::before {
+    content: var(--switch-icon);
+}
+
+/* Slides handle right when parent body gets the .light-mode tag */
+.light-mode .switch-handle {
+    transform: translateX(28px);
 }
 
 /* Heading styles */
 h1 {
-    color: #f4f4f5; /* Soft off-white header */
+    color: var(--text-primary);
     font-size: 2.6rem;
     font-weight: 700;
     margin-bottom: 12px;
@@ -20,7 +95,7 @@ h1 {
 /* Paragraph text styles */
 p {
     font-size: 1.1rem;
-    color: #a1a1aa; /* Comfortable gray secondary text */
+    color: var(--text-secondary);
 }
 
 /* Layout Sections */
@@ -30,8 +105,8 @@ section {
 }
 
 h2 {
-    color: #f4f4f5; /* Soft white section title */
-    border-bottom: 2px solid #3f3f46; /* Softer neutral dividing line */
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 12px;
     font-size: 1.6rem;
     margin-bottom: 24px;
@@ -46,34 +121,35 @@ h2 {
 
 /* Individual Gallery Cards */
 .gallery-card {
-    background-color: #27272a; /* Slightly lighter card background for contrast depth */
-    border: 1px solid #3f3f46; /* Softer neutral borders */
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     text-align: center;
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.2s, border-color 0.2s, background-color 0.3s;
 }
 
 /* Card hover animation */
 .gallery-card:hover {
     transform: translateY(-5px);
-    border-color: #d4d4d8; /* Silver highlight on hover */
+    border-color: var(--text-secondary);
 }
 
-/* Dark layout placeholder boxes */
+/* Layout placeholder boxes */
 .image-placeholder {
-    background-color: #1e1f22; /* Matches the background color for a clean cutout look */
+    background-color: var(--placeholder-bg);
     height: 120px;
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
+    transition: background-color 0.3s;
 }
 
 .gallery-card h3 {
     margin: 0 0 8px 0;
-    color: #f4f4f5;
+    color: var(--text-primary);
     font-size: 1.1rem;
     font-weight: 600;
 }
@@ -81,6 +157,6 @@ h2 {
 .gallery-card p {
     margin: 0;
     font-size: 0.85rem;
-    color: #a1a1aa; /* Soft gray card description */
+    color: var(--text-secondary);
     line-height: 1.5;
 }

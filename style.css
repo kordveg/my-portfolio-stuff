@@ -1,3 +1,165 @@
+/* Color variables for theme swapping */
+:root {
+    --bg-color: #1e1f22;          /* Softer dark charcoal */
+    --text-primary: #f4f4f5;      /* Soft off-white */
+    --text-secondary: #a1a1aa;    /* Comfortable gray */
+    --card-bg: #27272a;           /* Slightly lighter dark gray */
+    --border-color: #3f3f46;      /* Softer neutral borders */
+    --placeholder-bg: #1e1f22;    /* Dark cutout look */
+    
+    /* Sliding Switch Variables - Dark Mode (Crescent Symbol) */
+    --switch-bg: #27272a;
+    --switch-icon: "☾";           
+}
+
+/* Light Mode alternative values */
+.light-mode {
+    --bg-color: #f4f4f5;          /* Cream white */
+    --text-primary: #18181b;      /* Soft matte black */
+    --text-secondary: #52525b;    /* Deep slate gray */
+    --card-bg: #ffffff;           /* Crisp white cards */
+    --border-color: #e4e4e7;      /* Clean light border */
+    --placeholder-bg: #f4f4f5;    /* Light cutout look */
+    
+    /* Sliding Switch Variables - Light Mode (Sunburst Symbol) */
+    --switch-bg: #e4e4e7;
+    --switch-icon: "☼";           
+}
+
+/* General page layout */
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+/* Theme Toggle Capsule Track Component */
+.theme-switch-container {
+    text-align: right;
+    margin-bottom: 30px;
+}
+
+#theme-toggle {
+    background-color: var(--switch-bg);
+    border: 2px solid var(--border-color);
+    width: 60px;
+    height: 32px;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* The sliding circular switch handle notch */
+.switch-handle {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: absolute;
+    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
+}
+
+.switch-handle::before {
+    content: var(--switch-icon);
+}
+
+.light-mode .switch-handle {
+    transform: translateX(28px);
+}
+
+/* Heading styles */
+h1 {
+    color: var(--text-primary);
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* Paragraph text styles */
+p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+/* Layout Sections */
+section {
+    margin-top: 50px;
+    text-align: left;
+}
+
+h2 {
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 12px;
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+}
+
+/* Gallery Grid Layout */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+/* Individual Gallery Cards */
+.gallery-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s, background-color 0.3s;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--text-secondary);
+}
+
+/* Layout placeholder boxes */
+.image-placeholder {
+    background-color: var(--placeholder-bg);
+    height: 120px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    transition: background-color 0.3s;
+}
+
+.gallery-card h3 {
+    margin: 0 0 8px 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.gallery-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
 /* Universal Footer Widget Bar */
 .site-footer {
     margin-top: 80px;
@@ -15,51 +177,18 @@
 
 .footer-widgets a {
     color: var(--text-secondary);
-    font-size: 1.4rem; /* Makes the icons a great clickable size */
+    font-size: 1.4rem;
     transition: color 0.2s ease, transform 0.2s ease;
     display: inline-block;
 }
 
 .footer-widgets a:hover {
     color: var(--text-primary);
-    transform: translateY(-3px); /* Subtle creative lift on hover */
+    transform: translateY(-3px);
 }
 
 .footer-credits {
     font-size: 0.8rem;
     color: var(--text-secondary);
     opacity: 0.7;
-}
-
-/* Specific Contact Page Card Style */
-.contact-container {
-    max-width: 500px;
-    margin: 40px auto;
-}
-
-.contact-method {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 24px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.contact-method i {
-    font-size: 1.8rem;
-    color: var(--text-primary);
-}
-
-.contact-details h3 {
-    margin: 0 0 4px 0;
-    font-size: 1.1rem;
-    color: var(--text-primary);
-}
-
-.contact-details p {
-    margin: 0;
-    font-size: 0.9rem;
 }

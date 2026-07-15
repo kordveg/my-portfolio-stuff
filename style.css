@@ -38,12 +38,52 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-/* Theme Toggle Capsule Track Component */
-.theme-switch-container {
-    text-align: right;
-    margin-bottom: 30px;
+/* Header & Navigation Menu Layout */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
 }
 
+.nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+/* Unifies text states to erase default browser hyperlink blue */
+.nav-links a, .nav-links a:visited, .nav-links a:active {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+}
+
+/* Switches text color cleanly to your silver/black variables on hover */
+.nav-links a:hover {
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--text-primary);
+}
+
+/* Adjust the capsule button vertical alignment inside header */
+.theme-switch-container {
+    margin-bottom: 0;
+}
+
+/* Special text styles for the statement view */
+.statement-lead {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Theme Toggle Capsule Track Component */
 #theme-toggle {
     background-color: var(--switch-bg);
     border: 2px solid var(--border-color);
@@ -182,14 +222,14 @@ h2 {
     display: inline-block;
     
     /* Dynamic visual icon thinning controls */
-    -webkit-text-stroke: 0.5px var(--bg-color); /* Trims vector fill thickness */
-    opacity: 0.65;                              /* Softens borders to make them look ultra-thin */
+    -webkit-text-stroke: 0.5px var(--bg-color); 
+    opacity: 0.65;                              
 }
 
 .footer-widgets a:hover {
     color: var(--text-primary);
     transform: translateY(-3px);
-    opacity: 1;                                 /* Pops out nicely when focused or hovered */
+    opacity: 1;                                 
 }
 
 .footer-credits {

@@ -301,17 +301,19 @@ h2 {
     color: var(--text-secondary);
     opacity: 0.8;
 }
-/* Font Awesome Grid Icon Visibility Fix */
-.contact-card i.fa-regular, 
-.contact-card i.fa-brands,
-.contact-card i {
-    display: inline-block !important;
-    font-weight: 400 !important;   /* Restores the native Font Awesome line thickness */
-    -webkit-text-stroke: none !important; /* Prevents the text engine from trimming the graphic */
-    opacity: 0.8 !important;       /* Softens the color to naturally match JetBrains Mono */
+/* Custom Isolated Contact Vector Layout Controls */
+.contact-vector-icon {
+    font-size: 2.2rem;
+    color: var(--text-secondary);
+    display: inline-block;
+    margin-bottom: 12px;
+    font-weight: 100;
+    opacity: 0.65;
+    transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
-.contact-card:hover i {
-    opacity: 1 !important;
+.contact-card:hover .contact-vector-icon {
+    color: var(--text-primary);
+    opacity: 1;
+    transform: scale(1.05); /* Subtle interactive dynamic pop on hover */
 }
-

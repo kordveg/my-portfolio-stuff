@@ -301,3 +301,17 @@ h2 {
     color: var(--text-secondary);
     opacity: 0.8;
 }
+/* Font Awesome Grid Icon Visibility Fix */
+.contact-card i.fa-regular, 
+.contact-card i.fa-brands,
+.contact-card i {
+    display: inline-block !important;
+    font-weight: 400 !important;   /* Restores the native Font Awesome line thickness */
+    -webkit-text-stroke: none !important; /* Prevents the text engine from trimming the graphic */
+    opacity: 0.8 !important;       /* Softens the color to naturally match JetBrains Mono */
+}
+
+.contact-card:hover i {
+    opacity: 1 !important;
+}
+

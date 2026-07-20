@@ -339,7 +339,7 @@ h2 {
 }
 
 /* ==========================================================================
-   Universal Full-Screen Lightbox Modal
+   Universal Full-Screen Lightbox Modal (Fixed Stack Layout)
    ========================================================================== */
 .lightbox-modal {
   display: none; /* Hidden by default */
@@ -349,7 +349,9 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 15, 18, 0.95); /* Deep translucent masking */
+  background-color: rgba(15, 15, 18, 0.96); /* Deep translucent masking */
+  display: flex;
+  flex-direction: column; /* 🎯 Forces image and text to stack vertically */
   justify-content: center;
   align-items: center;
   cursor: zoom-out;
@@ -358,18 +360,17 @@ h2 {
 }
 
 .lightbox-modal.active {
-  display: flex;
   opacity: 1;
 }
 
 .lightbox-content {
   max-width: 90%;
-  max-height: 85%;
+  max-height: 75%; /* 🎯 Shrunk slightly to guarantee room for text below */
   object-fit: contain;
   border-radius: 4px;
   transform: scale(0.95);
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .lightbox-modal.active .lightbox-content {

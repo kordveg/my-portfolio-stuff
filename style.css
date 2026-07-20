@@ -217,7 +217,7 @@ h2 {
   height: 100%;
   object-fit: cover;
   /* Shift value manually (e.g., 'center 15%') to perfectly frame portraits or characters' faces */
-  object-position: center 15%; 
+  object-position: center 15%;
 }
 
 .gallery-card h3 {
@@ -339,10 +339,10 @@ h2 {
 }
 
 /* ==========================================================================
-   Universal Full-Screen Lightbox Modal (Fixed Stack Layout)
+   Universal Full-Screen Lightbox Modal (Corrected Invisible Wall Fix)
    ========================================================================== */
 .lightbox-modal {
-  display: none; /* Hidden by default */
+  display: none; /* Hidden by default so homepage link clicks work perfectly */
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -350,8 +350,6 @@ h2 {
   width: 100%;
   height: 100%;
   background-color: rgba(15, 15, 18, 0.96); /* Deep translucent masking */
-  display: flex;
-  flex-direction: column; /* 🎯 Forces image and text to stack vertically */
   justify-content: center;
   align-items: center;
   cursor: zoom-out;
@@ -360,12 +358,14 @@ h2 {
 }
 
 .lightbox-modal.active {
+  display: flex !important; /* Forces layout active only when clicked */
+  flex-direction: column !important; /* Stacks image on top, description text on bottom */
   opacity: 1;
 }
 
 .lightbox-content {
   max-width: 90%;
-  max-height: 75%; /* 🎯 Shrunk slightly to guarantee room for text below */
+  max-height: 75%; /* Guarantees room for description text layers beneath portrait frames */
   object-fit: contain;
   border-radius: 4px;
   transform: scale(0.95);

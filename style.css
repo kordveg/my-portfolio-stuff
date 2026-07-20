@@ -376,3 +376,49 @@ h2 {
 .lightbox-modal.active .lightbox-content {
   transform: scale(1);
 }
+/* ==========================================================================
+   Sketchbook Wall Dump System (Uncropped & Free-Flowing)
+   ========================================================================== */
+.sketchbook-wall-dump {
+  column-count: 3;
+  column-gap: 20px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* Fluid column scaling for mobile monitors */
+@media (max-width: 768px) {
+  .sketchbook-wall-dump { column-count: 2; }
+}
+@media (max-width: 480px) {
+  .sketchbook-wall-dump { column-count: 1; }
+}
+
+/* Individual framing blocks that adapt to image height */
+.sketchbook-wall-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s ease;
+}
+
+.sketchbook-wall-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--text-secondary);
+}
+
+/* 🎯 THE SECRET SAITE ENGINE: Disables rigid square cropping entirely */
+.sketchbook-wall-item img {
+  width: 100%;
+  height: auto !important; /* Forces vertical growth based on image shape */
+  object-fit: contain;     /* Displays the entire raw canvas without clipping */
+  display: block;
+  border-radius: 2px;
+}
+

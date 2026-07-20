@@ -171,7 +171,7 @@ h2 {
   /* Upgraded transitions for silkier motion */
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
               border-color 0.3s ease, 
-              background-color 0.3s ease,
+              background-color 0.3s ease, 
               box-shadow 0.3s ease;
   cursor: pointer;
 }
@@ -184,7 +184,16 @@ h2 {
   transform: translateY(-6px); /* Slightly higher crisp lift */
   border-color: var(--text-secondary);
   /* Elegant modern drop shadow calibrated for dark/light variations */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Unlocks sub-gallery specific description metadata text visibility */
+.gallery-container .gallery-card p {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 4px 0 0 0;
+  text-align: center;
 }
 
 /* Image Placeholder Frame Container */
@@ -207,6 +216,8 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Shift value manually (e.g., 'center 15%') to perfectly frame portraits or characters' faces */
+  object-position: center 15%; 
 }
 
 .gallery-card h3 {

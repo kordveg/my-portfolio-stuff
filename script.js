@@ -28,3 +28,37 @@ if (toggleButton) {
     localStorage.setItem('theme', theme);
   });
 }
+
+// ==========================================================================
+// NEW FEATURE: Universal Portfolio Full-Screen Lightbox Engine
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Create and inject the modal framework backdrop elements dynamically
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox-modal';
+  
+  const lightboxImg = document.createElement('img');
+  lightboxImg.className = 'lightbox-content';
+  lightboxImg.setAttribute('aria-label', 'Full screen archive view');
+  
+  lightbox.appendChild(lightboxImg);
+  document.body.appendChild(lightbox);
+
+  // 2. Watch your gallery placeholder frames globally for asset image clicks
+  document.body.addEventListener('click', (e) => {
+    // Check if the click target or its parent is an image inside your placeholder boxes
+    const clickedImg = e.target.closest('.image-placeholder img');
+    
+    if (clickedImg) {
+      e.preventDefault();
+      lightboxImg.src = clickedImg.src;
+      lightboxImg.alt = clickedImg.alt;
+      lightbox.classList.add('active');
+    }
+  });
+
+  // 3. Dismiss full screen view instantly when clicking anywhere on the screen backdrop
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+});

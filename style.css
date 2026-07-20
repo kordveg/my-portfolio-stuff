@@ -237,7 +237,7 @@ h2 {
 }
 
 /* ==========================================================================
-   Sketchbook Wall Dump System (Masonry Collage Wall Configuration)
+   Sketchbook Wall Dump System (Pure Raw Collage Update)
    ========================================================================== */
 .sketchbook-wall-dump {
   column-count: 3;
@@ -254,14 +254,35 @@ h2 {
   .sketchbook-wall-dump { column-count: 1; }
 }
 
-/* ==========================================================================
-   Sketchbook Wall Dump System (Pure Raw Collage Update)
-   ========================================================================== */
-.sketchbook-wall-dump {
-  column-count: 3;
-  column-gap: 20px;
+/* Individual raw image wrapper (Unlocks Click Focus Layer) */
+.sketchbook-wall-item {
+  display: inline-block;
   width: 100%;
-  margin-top: 30px;
+  margin-bottom: 20px;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  
+  /* 🎯 THE INTERACTIVE FIXES */
+  cursor: pointer !important;      /* Forces the pointing hand icon to show up */
+  pointer-events: auto !important;  /* Pierces through any invisible blocking layers */
+  user-select: none;                /* Stops accidental text highlighting while clicking */
+  
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sketchbook-wall-item:hover {
+  transform: scale(1.02);
+}
+
+/* Forces images to pass click telemetry through to the engine */
+.sketchbook-wall-item img {
+  width: 100%;
+  height: auto !important;
+  display: block;
+  border-radius: 0;
+  pointer-events: auto !important; /* Guarantees the image registers your touch */
 }
 
 /* Fluid column scaling for mobile monitors */

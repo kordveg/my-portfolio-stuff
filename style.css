@@ -168,7 +168,12 @@ h2 {
   text-align: center;
   text-decoration: none;
   display: block;
-  transition: transform 0.2s, border-color 0.2s, background-color 0.3s;
+  /* Upgraded transitions for silkier motion */
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              border-color 0.3s ease, 
+              background-color 0.3s ease,
+              box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .gallery-card, .gallery-card:visited, .gallery-card:active {
@@ -176,15 +181,17 @@ h2 {
 }
 
 .gallery-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px); /* Slightly higher crisp lift */
   border-color: var(--text-secondary);
+  /* Elegant modern drop shadow calibrated for dark/light variations */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
 }
 
 /* Image Placeholder Frame Container */
 .image-placeholder {
   background-color: var(--placeholder-bg);
   height: 150px; /* Forces uniform height even when completely empty */
-  width: 100%;  /* Spans full card width */
+  width: 100%; /* Spans full card width */
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -318,4 +325,42 @@ h2 {
   color: var(--text-primary);
   opacity: 1;
   transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Universal Full-Screen Lightbox Modal
+   ========================================================================== */
+.lightbox-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 15, 18, 0.95); /* Deep translucent masking */
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 85%;
+  object-fit: contain;
+  border-radius: 4px;
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.lightbox-modal.active .lightbox-content {
+  transform: scale(1);
 }

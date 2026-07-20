@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2. Watch your gallery placeholder frames globally for asset image clicks
   document.body.addEventListener('click', (e) => {
-    // 🎯 FIX: Tracks real click actions safely inside the listener function block!
+    // Tracks real click actions safely inside the listener function block!
     const clickedImg = e.target.closest('.image-placeholder img, .sketchbook-wall-item img');
     
     if (clickedImg) {

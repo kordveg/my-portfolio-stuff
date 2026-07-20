@@ -36,11 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Create and inject the modal framework backdrop elements dynamically
   const lightbox = document.createElement('div');
   lightbox.className = 'lightbox-modal';
-  
+
   const lightboxImg = document.createElement('img');
   lightboxImg.className = 'lightbox-content';
+  lightboxImg.setAttribute('aria-label', 'Full screen archive view');
   
-  // 📝 New: Create a text container for the artwork descriptions
+  // Create a text container for the artwork descriptions
   const lightboxCaption = document.createElement('div');
   lightboxCaption.style.cssText = "color: var(--text-primary); font-family: 'JetBrains Mono', monospace; margin-top: 15px; font-size: 1rem; text-align: center; max-width: 80%; padding: 0 10px;";
   
@@ -51,14 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2. Watch your gallery placeholder frames globally for asset image clicks
   document.body.addEventListener('click', (e) => {
-    // Check if the click target or its parent is an image inside your placeholder boxes
-    const clickedImg = e.target.closest('.image-placeholder img');
+    // 🎯 FIX: Tracks real click actions on regular blocks OR raw uncropped wall scans!
+    const clickedImg = e.target.closest('.image-placeholder img, .sketchbook-wall-item img');
     
     if (clickedImg) {
       e.preventDefault();
       lightboxImg.src = clickedImg.src;
       
-      // 🎯 Pulls description straight from the alt text of your HTML image tag
+      // Pulls description straight from the alt text of your HTML image tag
       lightboxCaption.textContent = clickedImg.alt || ""; 
       lightbox.classList.add('active');
     }

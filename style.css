@@ -152,7 +152,9 @@ h2 {
   margin-bottom: 24px;
 }
 
-/* Gallery Container Grid Layout */
+/* ==========================================================================
+   Global Portfolio Core Grids (Free-Flowing & Uncropped Layout Engine)
+   ========================================================================== */
 .gallery-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -196,11 +198,11 @@ h2 {
   text-align: center;
 }
 
-/* Image Placeholder Frame Container */
+/* Image Placeholder Container - Freed from height limitations globally */
 .image-placeholder {
   background-color: var(--placeholder-bg);
-  height: 150px; /* Forces uniform height even when completely empty */
-  width: 100%; /* Spans full card width */
+  height: auto; /* 🎯 Unlocks vertical growth dynamically across all pages */
+  width: 100%;  /* Spans full card width matching layout tracks */
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -211,13 +213,11 @@ h2 {
   transition: background-color 0.3s;
 }
 
-/* Live Image Asset Delivery Scaling */
+/* Live Image Asset Delivery Scaling - Enforces full canvas presentation */
 .image-placeholder img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Shift value manually (e.g., 'center 15%') to perfectly frame portraits or characters' faces */
-  object-position: center 15%;
+  height: auto !important; /* 🎯 Overrides strict fills to prevent squeezing */
+  object-fit: contain;     /* Displays the entire raw canvas without clipping */
 }
 
 .gallery-card h3 {
@@ -227,7 +227,54 @@ h2 {
   font-weight: 600;
 }
 
-/* Contact Page Grid Block Layout */
+/* ==========================================================================
+   Sketchbook Wall Dump System (Masonry Collage Wall Configuration)
+   ========================================================================== */
+.sketchbook-wall-dump {
+  column-count: 3;
+  column-gap: 20px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* Fluid column scaling for mobile monitors */
+@media (max-width: 768px) {
+  .sketchbook-wall-dump { column-count: 2; }
+}
+@media (max-width: 480px) {
+  .sketchbook-wall-dump { column-count: 1; }
+}
+
+/* Individual framing blocks that adapt to image height */
+.sketchbook-wall-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s ease;
+}
+
+.sketchbook-wall-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--text-secondary);
+}
+
+.sketchbook-wall-item img {
+  width: 100%;
+  height: auto !important;
+  object-fit: contain;
+  display: block;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   Contact Page Grid Block Layout
+   ========================================================================== */
 .contact-section {
   margin-top: 50px;
   text-align: left;
@@ -339,10 +386,10 @@ h2 {
 }
 
 /* ==========================================================================
-   Universal Full-Screen Lightbox Modal (Corrected Invisible Wall Fix)
+   Universal Full-Screen Lightbox Modal (Fixed Stack Layout)
    ========================================================================== */
 .lightbox-modal {
-  display: none; /* Hidden by default so homepage link clicks work perfectly */
+  display: none; /* Hidden by default so links are 100% clickable */
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -351,74 +398,3 @@ h2 {
   height: 100%;
   background-color: rgba(15, 15, 18, 0.96); /* Deep translucent masking */
   justify-content: center;
-  align-items: center;
-  cursor: zoom-out;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.lightbox-modal.active {
-  display: flex !important; /* Forces layout active only when clicked */
-  flex-direction: column !important; /* Stacks image on top, description text on bottom */
-  opacity: 1;
-}
-
-.lightbox-content {
-  max-width: 90%;
-  max-height: 75%; /* Guarantees room for description text layers beneath portrait frames */
-  object-fit: contain;
-  border-radius: 4px;
-  transform: scale(0.95);
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-}
-
-.lightbox-modal.active .lightbox-content {
-  transform: scale(1);
-}
-/* ==========================================================================
-   Sketchbook Wall Dump System (Uncropped & Free-Flowing)
-   ========================================================================== */
-.sketchbook-wall-dump {
-  column-count: 3;
-  column-gap: 20px;
-  width: 100%;
-  margin-top: 30px;
-}
-
-/* Fluid column scaling for mobile monitors */
-@media (max-width: 768px) {
-  .sketchbook-wall-dump { column-count: 2; }
-}
-@media (max-width: 480px) {
-  .sketchbook-wall-dump { column-count: 1; }
-}
-
-/* Individual framing blocks that adapt to image height */
-.sketchbook-wall-item {
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 20px;
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  padding: 10px;
-  box-sizing: border-box;
-  cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s ease;
-}
-
-.sketchbook-wall-item:hover {
-  transform: translateY(-4px);
-  border-color: var(--text-secondary);
-}
-
-/* 🎯 THE SECRET SAITE ENGINE: Disables rigid square cropping entirely */
-.sketchbook-wall-item img {
-  width: 100%;
-  height: auto !important; /* Forces vertical growth based on image shape */
-  object-fit: contain;     /* Displays the entire raw canvas without clipping */
-  display: block;
-  border-radius: 2px;
-}
-

@@ -30,7 +30,7 @@ if (toggleButton) {
 }
 
 // ==========================================================================
-// NEW FEATURE: Universal Portfolio Full-Screen Lightbox Engine (With Captions)
+// UNIVERSAL PORTFOLIO FULL-SCREEN LIGHTBOX ENGINE (WITH CAPTIONS)
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Create and inject the modal framework backdrop elements dynamically
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2. Watch your gallery placeholder frames globally for asset image clicks
   document.body.addEventListener('click', (e) => {
-    // 🎯 FIX: Tracks real click actions on regular blocks OR raw uncropped wall scans!
+    // 🎯 FIX: Tracks real click actions safely inside the listener function block!
     const clickedImg = e.target.closest('.image-placeholder img, .sketchbook-wall-item img');
     
     if (clickedImg) {

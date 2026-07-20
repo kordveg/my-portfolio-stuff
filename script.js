@@ -30,7 +30,7 @@ if (toggleButton) {
 }
 
 // ==========================================================================
-// NEW FEATURE: Universal Portfolio Full-Screen Lightbox Engine
+// NEW FEATURE: Universal Portfolio Full-Screen Lightbox Engine (With Captions)
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Create and inject the modal framework backdrop elements dynamically
@@ -39,9 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const lightboxImg = document.createElement('img');
   lightboxImg.className = 'lightbox-content';
-  lightboxImg.setAttribute('aria-label', 'Full screen archive view');
   
+  // 📝 New: Create a text container for the artwork descriptions
+  const lightboxCaption = document.createElement('div');
+  lightboxCaption.style.cssText = "color: var(--text-primary); font-family: 'JetBrains Mono', monospace; margin-top: 15px; font-size: 1rem; text-align: center; max-width: 80%; padding: 0 10px;";
+  
+  // Append both the image and the caption text track into the container
   lightbox.appendChild(lightboxImg);
+  lightbox.appendChild(lightboxCaption);
   document.body.appendChild(lightbox);
 
   // 2. Watch your gallery placeholder frames globally for asset image clicks
@@ -52,7 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (clickedImg) {
       e.preventDefault();
       lightboxImg.src = clickedImg.src;
-      lightboxImg.alt = clickedImg.alt;
+      
+      // 🎯 Pulls description straight from the alt text of your HTML image tag
+      lightboxCaption.textContent = clickedImg.alt || ""; 
       lightbox.classList.add('active');
     }
   });

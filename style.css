@@ -254,31 +254,55 @@ h2 {
   .sketchbook-wall-dump { column-count: 1; }
 }
 
-/* Individual framing blocks that adapt to image height */
+/* ==========================================================================
+   Sketchbook Wall Dump System (Pure Raw Collage Update)
+   ========================================================================== */
+.sketchbook-wall-dump {
+  column-count: 3;
+  column-gap: 20px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* Fluid column scaling for mobile monitors */
+@media (max-width: 768px) {
+  .sketchbook-wall-dump { column-count: 2; }
+}
+@media (max-width: 480px) {
+  .sketchbook-wall-dump { column-count: 1; }
+}
+
+/* Individual raw image wrapper (No boxes, no borders) */
 .sketchbook-wall-item {
   display: inline-block;
   width: 100%;
   margin-bottom: 20px;
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  padding: 10px;
+  background-color: transparent !important; /* 🎯 Erases the card background color */
+  border: none !important;                  /* 🎯 Completely deletes the card border lines */
+  padding: 0 !important;                    /* Strips inner padding so images are completely free */
   box-sizing: border-box;
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .sketchbook-wall-item:hover {
-  transform: translateY(-4px);
-  border-color: var(--text-secondary);
+  transform: scale(1.02); /* Clean, organic zoom lift on hover */
 }
 
+/* Forces images to maintain original dimensions without restrictions */
 .sketchbook-wall-item img {
   width: 100%;
-  height: auto !important;
-  object-fit: contain;
+  height: auto !important; /* 🎯 Forces vertical growth based on raw sketch shapes */
   display: block;
-  border-radius: 2px;
+  border-radius: 0;        /* 🎯 Keeps edges sharp and uncropped like raw scanner files */
+}
+
+/* Wipes out any leftover placeholder background rules on this specific page */
+.sketchbook-wall-item .image-placeholder {
+  background-color: transparent !important;
+  border: none !important;
+  height: auto !important;
+  margin-bottom: 0 !important;
 }
 
 /* ==========================================================================

@@ -439,16 +439,42 @@ h2 {
   transform: translateY(-2px);
 }
 
-/* ==========================================================================
-   Universal Full-Screen Lightbox Modal (Fixed Stack Layout)
+  /* ==========================================================================
+   Universal Full-Screen Lightbox Modal (Corrected Stack Layout)
    ========================================================================== */
 .lightbox-modal {
-  display: none; /* Hidden by default so links are 100% clickable */
+  display: none; /* Hidden by default so base layout remains fully clickable */
   position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 15, 18, 0.96); /* Deep translucent masking */
+  background-color: rgba(15, 15, 18, 0.96); /* Dark masking backdrop */
   justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.active {
+  display: flex !important; /* Activates layout block when item triggers click */
+  flex-direction: column !important; /* Stacks image cleanly over caption text */
+  opacity: 1;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 75%; /* Guarantees layout clearance for monospace captions */
+  object-fit: contain;
+  border-radius: 4px;
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-modal.active .lightbox-content {
+  transform: scale(1);
+}
+

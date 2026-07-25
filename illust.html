@@ -10,6 +10,69 @@
   <link href="https://googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
   <!-- Core Stylesheet Connection -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- 🛠️ INJECTED LAYOUT TUNING FOR FREE-FLOWING IMAGE DUMP -->
+  <style>
+    /* Mimics the multi-column image masonry format */
+    .illust-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    /* Keeps cards raw, flat, borderless, and edge-to-edge */
+    .illust-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-color, #333);
+      border-radius: 4px;
+      line-height: 0; /* Eradicates inline image browser gaps */
+      background: #111;
+    }
+
+    .illust-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    /* Scale up artwork on hover */
+    .illust-card:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Hidden title overlay that drops down on hover */
+    .illust-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none; /* Stops it from messing up click-to-zoom */
+      box-sizing: border-box;
+    }
+
+    .illust-card:hover .illust-overlay {
+      opacity: 1;
+    }
+
+    .illust-overlay h3 {
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      font-size: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation Header -->
@@ -33,11 +96,11 @@
 
   <!-- ========================================== ⏳ ARCHIVE ERA: 2026 (Current) ========================================== -->
   <section class="portfolio-section" style="margin-top: 60px;">
-    <h2 style="font-size: 1.4rem; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; margin-bottom: 24px;">
+    <h2 style="font-size: 1.4rem; border-bottom: 2px solid var(--border-color, #333); padding-bottom: 8px; margin-bottom: 24px;">
       2026 Log
     </h2>
 
-    <h3 style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 15px; font-weight: 500;">Featured Gallery Wall</h3>
+    <h3 style="font-size: 1.1rem; color: var(--text-secondary, #888); margin-bottom: 15px; font-weight: 500;">Featured Gallery Wall</h3>
     
     <!-- 🎯 THE FREE-FLOWING COLLAGE CONTAINER -->
     <div class="illust-container">

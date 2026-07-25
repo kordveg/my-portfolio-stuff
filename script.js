@@ -65,8 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 3. Dismiss full screen view instantly when clicking anywhere on the screen backdrop
-  lightbox.addEventListener('click', () => {
+  // 3. Dismiss full screen view ONLY when clicking the dark backdrop space
+  lightbox.addEventListener('click', (e) => {
+    // 🎯 If you click the actual artwork image or text caption, stop it from closing!
+    if (e.target === lightboxImg || e.target === lightboxCaption) {
+      return;
+    }
+    // Only close out the window if you click the dark void background area
     lightbox.classList.remove('active');
   });
 });

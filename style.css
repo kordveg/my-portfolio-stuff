@@ -439,42 +439,49 @@ h2 {
   transform: translateY(-2px);
 }
 
-  /* ==========================================================================
-   Universal Full-Screen Lightbox Modal (Corrected Stack Layout)
+ /* ==========================================================================
+   Universal Full-Screen Lightbox Modal (Scrollable Zoom System)
    ========================================================================== */
 .lightbox-modal {
-  display: none; /* Hidden by default so base layout remains fully clickable */
+  display: none;
   position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 15, 18, 0.96); /* Dark masking backdrop */
-  justify-content: center;
-  align-items: center;
-  cursor: zoom-out;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  background-color: rgba(15, 15, 18, 0.97); /* Deep dark mask overlay */
+  
+  /* 🎯 THE SCROLL MECHANIC: Spawns scrollbars natively when an image is huge */
+  overflow: auto; 
+  padding: 40px 20px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
+/* Clear alignment tracks inside our active display state */
 .lightbox-modal.active {
-  display: flex !important; /* Activates layout block when item triggers click */
-  flex-direction: column !important; /* Stacks image cleanly over caption text */
-  opacity: 1;
+  display: block !important; /* Block mode lets scrollbars calculate layouts naturally */
 }
 
 .lightbox-content {
   max-width: 90%;
-  max-height: 75%; /* Guarantees layout clearance for monospace captions */
+  max-height: 80vh;
   object-fit: contain;
   border-radius: 4px;
-  transform: scale(0.95);
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin: 0 auto;
+  display: block;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  
+  /* Silk smooth tracking transition curves */
+  transition: max-width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              max-height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: zoom-in !important;
 }
 
-.lightbox-modal.active .lightbox-content {
-  transform: scale(1);
+/* 🎯 THE ZOOM OVERHAUL STRUCT: Blows up your scans to its massive raw pixels */
+.lightbox-content.zoomed {
+  max-width: 180% !important; /* Forces the image to break past screen constraints */
+  max-height: none !important;  /* Lets tall vertical layouts unfold completely */
+  cursor: zoom-out !important;
 }
-

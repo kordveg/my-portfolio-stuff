@@ -30,10 +30,9 @@ if (toggleButton) {
 }
 
 // ==========================================================================
-// UNIVERSAL PORTFOLIO FULL-SCREEN LIGHTBOX ENGINE (WITH CAPTIONS)
+// UNIVERSAL PORTFOLIO FULL-SCREEN LIGHTBOX ENGINE (WITH CAPTIONS & ZOOM)
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Create and inject the modal framework backdrop elements dynamically
   const lightbox = document.createElement('div');
   lightbox.className = 'lightbox-modal';
 
@@ -41,37 +40,46 @@ document.addEventListener('DOMContentLoaded', () => {
   lightboxImg.className = 'lightbox-content';
   lightboxImg.setAttribute('aria-label', 'Full screen archive view');
   
-  // Create a text container for the artwork descriptions
   const lightboxCaption = document.createElement('div');
   lightboxCaption.style.cssText = "color: var(--text-primary); font-family: 'JetBrains Mono', monospace; margin-top: 15px; font-size: 1rem; text-align: center; max-width: 80%; padding: 0 10px;";
   
-  // Append both the image and the caption text track into the container
   lightbox.appendChild(lightboxImg);
   lightbox.appendChild(lightboxCaption);
   document.body.appendChild(lightbox);
 
-  // 2. Watch your gallery placeholder frames globally for asset image clicks
+  // 2. Watch your gallery placeholders globally for clicks
   document.body.addEventListener('click', (e) => {
-    // Tracks real click actions safely inside the listener function block!
     const clickedImg = e.target.closest('.image-placeholder img, .sketchbook-wall-item img');
     
     if (clickedImg) {
       e.preventDefault();
       lightboxImg.src = clickedImg.src;
-      
-      // Pulls description straight from the alt text of your HTML image tag
       lightboxCaption.textContent = clickedImg.alt || ""; 
       lightbox.classList.add('active');
+      lightboxImg.style.transform = "scale(1)"; // Reset zoom factor on fresh open
     }
   });
 
-  // 3. Dismiss full screen view ONLY when clicking the dark backdrop space
+  // 🎯 3. Toggle Zooming directly when tapping the image panel
+  lightboxImg.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevents backdrop exit triggers from executing
+    
+    // Checks if the image is currently zoomed in or out
+    if (lightboxImg.style.transform === "scale(1.4)") {
+      lightboxImg.style.transform = "scale(1)";
+      lightboxImg.style.cursor = "zoom-in";
+    } else {
+      lightboxImg.style.transform = "scale(1.4)";
+      lightboxImg.style.cursor = "zoom-out";
+    }
+  });
+
+  // 4. Dismiss full screen view ONLY when clicking the dark backdrop space
   lightbox.addEventListener('click', (e) => {
-    // 🎯 If you click the actual artwork image or text caption, stop it from closing!
     if (e.target === lightboxImg || e.target === lightboxCaption) {
       return;
     }
-    // Only close out the window if you click the dark void background area
     lightbox.classList.remove('active');
+    lightboxImg.style.transform = "scale(1)";
   });
 });

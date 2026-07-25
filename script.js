@@ -30,7 +30,7 @@ if (toggleButton) {
 }
 
 // ==========================================================================
-// UNIVERSAL PORTFOLIO FULL-SCREEN LIGHTBOX ENGINE (WITH CAPTIONS & ZOOM)
+// UNIVERSAL PORTFOLIO FULL-SCREEN LIGHTBOX ENGINE (SCROLLABLE ARCHIVE VERSION)
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   const lightbox = document.createElement('div');
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   lightboxImg.setAttribute('aria-label', 'Full screen archive view');
   
   const lightboxCaption = document.createElement('div');
-  lightboxCaption.style.cssText = "color: var(--text-primary); font-family: 'JetBrains Mono', monospace; margin-top: 15px; font-size: 1rem; text-align: center; max-width: 80%; padding: 0 10px;";
+  lightboxCaption.style.cssText = "color: var(--text-primary); font-family: 'JetBrains Mono', monospace; margin-top: 25px; margin-bottom: 20px; font-size: 1rem; display: inline-block; max-width: 80%; padding: 0 10px;";
   
   lightbox.appendChild(lightboxImg);
   lightbox.appendChild(lightboxCaption);
@@ -49,29 +49,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2. Watch your gallery placeholders globally for clicks
   document.body.addEventListener('click', (e) => {
-    const clickedImg = e.target.closest('.image-placeholder img, .sketchbook-wall-item img');
+    // Tracks normal layout grids, raw sketchbook streams, and illustration entries
+    const clickedImg = e.target.closest('.image-placeholder img, .sketchbook-wall-item img, .illust-card img');
     
     if (clickedImg) {
       e.preventDefault();
       lightboxImg.src = clickedImg.src;
       lightboxCaption.textContent = clickedImg.alt || ""; 
+      lightboxImg.classList.remove('zoomed'); // Ensure it resets on fresh open
       lightbox.classList.add('active');
-      lightboxImg.style.transform = "scale(1)"; // Reset zoom factor on fresh open
+      lightbox.scrollTop = 0; // Snap container scroll alignment back to top
     }
   });
 
-  // 🎯 3. Toggle Zooming directly when tapping the image panel
+  // 🎯 3. Toggle Ultra-Zoom State directly when clicking the artwork image
   lightboxImg.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevents backdrop exit triggers from executing
-    
-    // Checks if the image is currently zoomed in or out
-    if (lightboxImg.style.transform === "scale(1.4)") {
-      lightboxImg.style.transform = "scale(1)";
-      lightboxImg.style.cursor = "zoom-in";
-    } else {
-      lightboxImg.style.transform = "scale(1.4)";
-      lightboxImg.style.cursor = "zoom-out";
-    }
+    e.stopPropagation(); // Stops backdrop exit triggers from executing
+    lightboxImg.classList.toggle('zoomed');
   });
 
   // 4. Dismiss full screen view ONLY when clicking the dark backdrop space
@@ -80,6 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     lightbox.classList.remove('active');
-    lightboxImg.style.transform = "scale(1)";
+    lightboxImg.classList.remove('zoomed');
   });
 });

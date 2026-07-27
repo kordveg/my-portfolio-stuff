@@ -217,7 +217,7 @@ h2 {
 .image-placeholder img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 🎯 Crops the cover preview so the grid stays completely flat and tidy */
+  object-fit: cover; /* Crops the cover preview so the grid stays completely flat and tidy */
   object-position: center 15%; /* Keeps focal points like faces completely framed */
 }
 
@@ -225,7 +225,7 @@ h2 {
 /* Live Image Asset Delivery Scaling - Enforces full canvas presentation */
 .image-placeholder img {
   width: 100%;
-  height: auto !important; /* 🎯 Overrides strict fills to prevent squeezing */
+  height: auto !important; /* Overrides strict fills to prevent squeezing */
   object-fit: contain;     /* Displays the entire raw canvas without clipping */
 }
 
@@ -298,8 +298,8 @@ h2 {
   display: inline-block;
   width: 100%;
   margin-bottom: 20px;
-  background-color: transparent !important; /* 🎯 Erases the card background color */
-  border: none !important;                  /* 🎯 Completely deletes the card border lines */
+  background-color: transparent !important; /*  Erases the card background color */
+  border: none !important;                  /*  Completely deletes the card border lines */
   padding: 0 !important;                    /* Strips inner padding so images are completely free */
   box-sizing: border-box;
   cursor: pointer;
@@ -313,9 +313,9 @@ h2 {
 /* Forces images to maintain original dimensions without restrictions */
 .sketchbook-wall-item img {
   width: 100%;
-  height: auto !important; /* 🎯 Forces vertical growth based on raw sketch shapes */
+  height: auto !important; /*  Forces vertical growth based on raw sketch shapes */
   display: block;
-  border-radius: 0;        /* 🎯 Keeps edges sharp and uncropped like raw scanner files */
+  border-radius: 0;        /*  Keeps edges sharp and uncropped like raw scanner files */
 }
 
 /* Wipes out any leftover placeholder background rules on this specific page */
@@ -478,7 +478,7 @@ h2 {
       box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     }
 
-    /* 🎯 ULTRA-ZOOM STATE: Scales up dynamically from its exact layout center */
+    /* ULTRA-ZOOM STATE: Scales up dynamically from its exact layout center */
     .lightbox-content.zoomed {
       max-width: 90vw;   /* Keeps the underlying structural layout frame perfectly locked */
       max-height: 80vh;  /* Prevents structural drift or jumping scroll bars */

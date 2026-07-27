@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } 
   }); 
 
-  // 🎯 3. Toggle Ultra-Zoom State directly when clicking the artwork image 
+  //  3. Toggle Ultra-Zoom State directly when clicking the artwork image 
   lightboxImg.addEventListener('click', (e) => { 
     e.stopPropagation(); // Stops backdrop exit triggers from executing 
     lightboxImg.classList.toggle('zoomed'); 

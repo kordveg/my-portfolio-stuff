@@ -536,3 +536,29 @@ h2 {
     opacity: 0 !important;
     display: none !important;
 }
+/* ==========================================================================
+   Clean Add-on: Cinematic Sketchbook Portal Balance Fix
+   ========================================================================== */
+
+/* Forces the sketchbook containers to stretch wide across your section columns */
+.sketchbook-project-card {
+    width: 100% !important;
+    max-width: 800px; /* Constrains it to line up elegantly with your log headings */
+    margin: 0 auto 40px auto !important; /* Centers the card slab and leaves clean bottom margins */
+    display: block !important;
+}
+
+/* Transforms the blank placeholder into a wide horizontal frame ratio */
+.sketchbook-project-card .project-preview-box {
+    width: 100% !important;
+    height: 320px !important; /* Generous landscape canvas size */
+    background-color: #16161a !important;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Cleans up the text alignment directly underneath the landscape preview slab */
+.sketchbook-project-card .project-card-footer {
+    text-align: left !important; /* Left-aligns text to match your "2026 Log" style headers */
+    padding: 15px 0 0 4px !important;
+}

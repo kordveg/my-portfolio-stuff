@@ -494,4 +494,20 @@ h2 {
       cursor: zoom-out;
       transform: scale(1.6); /* Swells the visual canvas up by 60% from the dead center */
     }
+/* ==========================================================================
+   Safe Add-on: Portal Upscaling (Leaves your original code blocks untouched)
+   ========================================================================== */
+.gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+}
+
+.gallery-card {
+    padding: 30px 20px !important;
+}
+
+.image-placeholder {
+    height: 240px !important; /* Forces the internal blank box to be tall and substantial */
+    width: 100%;
+}
+
 

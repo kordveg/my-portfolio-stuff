@@ -537,42 +537,55 @@ h2 {
     display: none !important;
 }
 /* ==========================================================================
-   Aggressive Landscape Balance Overrides for Sketchbook Dashboard
+   Epic Wide-Screen Cinematic Aspect Calibration for Sketchbook Landing
    ========================================================================== */
 
-/* Sprawls the card out wide to match the section width */
-.sketchbook-project-card {
-    width: 100% !important;
-    max-width: 900px !important; 
-    margin: 0 auto 50px auto !important; 
-    display: block !important;
+/* Spreads the main content section out comfortably across your display fields */
+.portfolio-section {
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
 }
 
-/* Forces the box container to stop behaving like a square */
+/* Redefines the sketch container to match the exact aesthetic of your header bounds */
+.sketchbook-project-card {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 60px 0 !important; /* Elegant vertical pacing between era blocks */
+}
+
+/* Forces the empty portal canvas into a relaxing landscape view */
 .sketchbook-project-card .project-preview-box {
     width: 100% !important;
     max-width: 100% !important;
-    height: 280px !important; /* Forces a clean, wide landscape aspect ratio */
-    background-color: #16161a !important;
-    border-radius: 6px;
-    overflow: hidden;
-    margin: 10px 0 !important;
+    height: 380px !important; /* Perfect widescreen display presence */
+    background-color: #151518 !important;
+    border: 1px solid var(--border-color, #2a2a2e) !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
 }
 
-/* Grounds the typography so it sits flat and aligned on the left */
+/* Direct typographical grounding to get rid of the center-stacked stress */
 .sketchbook-project-card .project-card-footer {
     text-align: left !important;
-    padding: 10px 0 0 0 !important;
     width: 100% !important;
+    padding: 16px 0 0 0 !important;
 }
 
 .sketchbook-project-card .project-card-footer h3 {
     text-align: left !important;
-    font-size: 1.2rem !important;
-    margin: 0 0 4px 0 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    margin: 0 0 6px 0 !important;
+    color: var(--text-primary, #fff) !important;
 }
 
 .sketchbook-project-card .project-card-footer p {
     text-align: left !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.85rem !important;
+    color: var(--text-secondary, #888) !important;
     margin: 0 !important;
 }

@@ -537,28 +537,42 @@ h2 {
     display: none !important;
 }
 /* ==========================================================================
-   Clean Add-on: Cinematic Sketchbook Portal Balance Fix
+   Aggressive Landscape Balance Overrides for Sketchbook Dashboard
    ========================================================================== */
 
-/* Forces the sketchbook containers to stretch wide across your section columns */
+/* Sprawls the card out wide to match the section width */
 .sketchbook-project-card {
     width: 100% !important;
-    max-width: 800px; /* Constrains it to line up elegantly with your log headings */
-    margin: 0 auto 40px auto !important; /* Centers the card slab and leaves clean bottom margins */
+    max-width: 900px !important; 
+    margin: 0 auto 50px auto !important; 
     display: block !important;
 }
 
-/* Transforms the blank placeholder into a wide horizontal frame ratio */
+/* Forces the box container to stop behaving like a square */
 .sketchbook-project-card .project-preview-box {
     width: 100% !important;
-    height: 320px !important; /* Generous landscape canvas size */
+    max-width: 100% !important;
+    height: 280px !important; /* Forces a clean, wide landscape aspect ratio */
     background-color: #16161a !important;
     border-radius: 6px;
     overflow: hidden;
+    margin: 10px 0 !important;
 }
 
-/* Cleans up the text alignment directly underneath the landscape preview slab */
+/* Grounds the typography so it sits flat and aligned on the left */
 .sketchbook-project-card .project-card-footer {
-    text-align: left !important; /* Left-aligns text to match your "2026 Log" style headers */
-    padding: 15px 0 0 4px !important;
+    text-align: left !important;
+    padding: 10px 0 0 0 !important;
+    width: 100% !important;
+}
+
+.sketchbook-project-card .project-card-footer h3 {
+    text-align: left !important;
+    font-size: 1.2rem !important;
+    margin: 0 0 4px 0 !important;
+}
+
+.sketchbook-project-card .project-card-footer p {
+    text-align: left !important;
+    margin: 0 !important;
 }

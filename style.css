@@ -325,6 +325,15 @@ h2 {
   height: auto !important;
   margin-bottom: 0 !important;
 }
+/* Fixes off-center alignment by constraining maximum layout width and centering the container */
+.sketchbook-wall-dump {
+    column-count: 2 !important;
+    column-gap: 20px !important;
+    max-width: 1000px; /* Aligns container tightly with your header/portfolio section bounds */
+    margin: 0 auto !important; /* Centers the whole container field perfectly on the page */
+    padding: 0 20px;
+    display: block !important;
+}
 
 /* ==========================================================================
    Contact Page Grid Block Layout

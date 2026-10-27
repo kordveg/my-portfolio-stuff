@@ -16,77 +16,57 @@
         <nav class="nav-links"> 
             <a href="index.html">Back to Home</a> 
         </nav> 
-        <!-- Theme Toggle Switch --> 
-        <div class="theme-switch-container"> 
-            <button id="theme-toggle" aria-label="Toggle dark and light mode"> 
-                <span class="switch-handle"></span> 
-            </button> 
-        </div> 
-    </header> 
-
-    <!-- Main Content Section --> 
-    <section class="portfolio-section"> 
-        <h2>Concept Art</h2> 
-        <p>Character design, exploration, and visual development.</p> 
-
-        <!-- Replaced placeholders with your masonry layout container -->
-        <div class="gallery-container masonry-stream"> 
-            
-            <!-- Work 1: Hazed Dayz -->
-            <div class="gallery-card">
-                <img src="https://imgur.com" alt="" class="zoomable-img" loading="lazy">
-                <div class="gallery-overlay">
-                    <h3></h3>
-                </div>
-            </div>
-
-            <!-- Work 2: When The Sun Hits -->
-            <div class="gallery-card">
-                <img src="https://imgur.com" alt="" class="zoomable-img" loading="lazy">
-                <div class="gallery-overlay">
-                    <h3></h3>
-                </div>
-            </div>
-
-            <!-- Work 3: Turbine Collision -->
-            <div class="gallery-card">
-                <img src="https://imgur.com" alt="" class="zoomable-img" loading="lazy">
-                <div class="gallery-overlay">
-                    <h3></h3>
-                </div>
-            </div>
-
-            <!-- Work 4: Sonder -->
-            <div class="gallery-card">
-                <img src="https://imgur.com" alt="" class="zoomable-img" loading="lazy">
-                <div class="gallery-overlay">
-                    <h3></h3>
-                </div>
-            </div>
-
-            <!-- Work 5: A Walk -->
-            <div class="gallery-card">
-                <img src="https://imgur.com" alt="" class="zoomable-img" loading="lazy">
-                <div class="gallery-overlay">
-                    <h3></h3>
-                </div>
-            </div>
-
-        </div> 
-    </section> 
-
-    <!-- UNIVERSAL LIGHTBOX ZOOM MODAL CONTAINER (Aligned with your style.css line 454) -->
-    <div id="imageZoomModal" class="lightbox-modal">
-        <span class="close-zoom" style="position: absolute; top: 20px; right: 30px; color: #888; font-size: 35px; cursor: pointer;">&times;</span>
-        <img class="lightbox-content" id="zoomedImage" alt="Zoomed view">
+         <!-- Theme Toggle Switch -->
+    <div class="theme-switch-container">
+      <button id="theme-toggle" aria-label="Toggle dark and light mode">
+        <span class="switch-handle"></span>
+      </button>
     </div>
+  </header>
 
-    <!-- Universal Footer --> 
-    <footer class="site-footer"> 
-        <p class="footer-credits">© 2026 Built by yours truly</p> 
-    </footer> 
+  <!-- Main Content Header Section -->
+  <section class="portfolio-section">
+    <h2>Sketchbook Scans</h2>
+    <p>Raw brainstorming, gesture drawings, and thumbs.</p>
+  </section>
 
-    <!-- Script to handle light/dark logic --> 
-    <script src="script.js"></script> 
-</body> 
+<!-- ========================================== -->
+<!-- Personal Project Grid                -->
+<!-- ========================================== -->
+<h2 style="font-size: 1.4rem; border-bottom: 2px solid var(--border-color, #333); padding-bottom: 8px; margin-bottom: 24px; font-family: 'JetBrains Mono', monospace;">
+    2026 Log
+</h2>
+
+<!-- We reuse your flawless home page grid container here! -->
+<div class="gallery-container" style="margin-bottom: 60px;">
+
+    <!-- Card 1: The Moorish -->
+    <a href="studies26.html" class="gallery-card">
+        <div class="image-placeholder">
+            <!-- Hidden empty tag matches your clean home dashboard squares -->
+            <img src="https://i.imgur.com/Jcf5lDz.jpeg" alt="Observational Studies Preview" loading="lazy" style="display:block;">
+        </div>
+        <h3 style="font-size: 1.1rem; margin-top: 15px;">Enter The Moorish</h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary, #888); margin-top: 4px;">View complete wall dump →</p>
+    </a>
+
+    <!-- Card 2: Spaces -->
+    <a href="scribs2026.html" class="gallery-card">
+        <div class="image-placeholder">
+            <img src="https://i.imgur.com/1Fj53Cc.jpeg" alt="Scribbles Preview" loading="lazy" style="display:inline-block;">
+        </div>
+        <h3 style="font-size: 1.1rem; margin-top: 15px;">Enter Spaces</h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary, #888); margin-top: 4px;">View complete wall dump →</p>
+    </a>
+
+</div>
+
+  <!-- Universal Footer -->
+  <footer class="site-footer">
+    <p class="footer-credits">© 2026 Built by yours truly</p>
+  </footer>
+
+  <!-- Script to handle light/dark and lightbox logic -->
+  <script src="script.js"></script>
+</body>
 </html>
